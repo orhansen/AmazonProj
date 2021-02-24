@@ -2,23 +2,32 @@
     ViewData["Title"] = "Amazon Books";
 }
 
-@model IQueryable<Book>
-@*Index page. LAnding page of the site that displays the site name and currently the books in the database.*@
+@model BookListViewModel
+@*Index page. Landing page of the site that displays the site name and currently the books in the database.*@
+@*Incorporates various bootstrap class stylings to give the site a more aesthetic appeal.*@
 <header>
-    <div>
-        <h1>Amazon's Online Books</h1>
+    <div class="box-shadow shadow-lg m-2 p-1">
+        <h1 class="text-uppercase">Amazon's Online Books</h1>
     </div>
 </header>
-<div>
-    @foreach (var x in Model)
+<div class="row justify-content-center">
+    @foreach (var x in Model.Books)
     {
-        <div>
-            <h4 class="font-weight-bold">@x.Title</h4>
-            <p>Author: @x.Author</p>
-            <p>Publisher: @x.Publisher</p>
-            <p>ISBN: @x.ISBN</p>
-            <p>Category: @x.Category</p>
-            <p>Price: $@x.Price</p>
+        <div class="col-4 card card-outline-dark m-3 p-1">
+            <span class="badge badge-pill badge-dark text-light font-weight-bold">
+                <h4>@x.Title</h4>
+            </span>
+            <p class="alert-danger">Author: @x.Author</p>
+            <p class="alert-primary">Publisher: @x.Publisher</p>
+            <p class="alert-secondary">ISBN: @x.ISBN</p>
+            <p class="alert-success">Category: @x.Category</p>
+            <p class="alert-warning">Pages: @x.Pages</p>
+            <p class="alert-dark text-light">Price: $@x.Price</p>
         </div>
     }
 </div>
+
+<div page-model="@Model.PagingInfo" page-action="Index" page-classes-enabled="true" page-class="btn"
+     page-class-normal="btn-outline-dark"
+     page-class-selected="btn-primary"
+     class="btn-group pull-right m-1"></div>

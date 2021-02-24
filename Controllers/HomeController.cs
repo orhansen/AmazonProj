@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using AmazonProj.Models.ViewModels;
 
 //Home controller. This controlls the get and post requests handled by the application.
 namespace AmazonProj.Controllers
@@ -17,6 +18,9 @@ namespace AmazonProj.Controllers
         //Private variable for class use
         private IAmazonRepository _repository;
 
+        //Int to determine the amount of items we want listed on a single page
+        public int PageSize = 5;
+
         public HomeController(ILogger<HomeController> logger, IAmazonRepository repository)
         {
             _logger = logger;
@@ -24,9 +28,22 @@ namespace AmazonProj.Controllers
         }
 
         //primary get action. will populate index page with the Books in the database.
-        public IActionResult Index()
+        public IActionResult Index(int page = 1)
         {
-            return View(_repository.Books);
+            return View(new BookListViewModel
+            {
+                Books = _repository.Books
+                    .OrderBy(b => b.BookID)
+                    .Skip((page - 1) * PageSize)
+                    .Take(PageSize)
+                ,
+                PagingInfo= new PagingInfo
+                {
+                    CurrentPage = page,
+                    ItemsPerPage = PageSize,
+                    TotalNumItems = _repository.Books.Count()
+                }
+            });
         }
 
         public IActionResult Privacy()
