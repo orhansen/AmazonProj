@@ -1,0 +1,18 @@
+﻿@*This creates the navigation menu to dynamically display the category on our index page. It also changes the color of the menu based on if its selected or hovered over*@
+
+@model IEnumerable<string>
+
+<a class="btn btn-block btn-outline-secondary " asp-action="Index" asp-controller="Home"
+   asp-route-category="">
+    Home
+</a>
+
+@foreach (string category in Model)
+{
+    <a class ="btn btn-block @(category == ViewBag.SelectedCategory ? "btn-primary" : "btn-outline-secondary")"
+       asp-action="Index" asp-controller="Home"
+       asp-route-category="@category"
+       asp-route-page="1">
+        @category
+    </a>
+}

@@ -25,132 +25,158 @@ namespace AmazonProj.Models
                     new Book //Loading the Data based on the Book Model created previously.
                     {
                         Title = "Les Miserables",
-                        Author = "Victor Hugo",
+                        AuthorFirst = "Victor",
+                        AuthorLast = "Hugo",
                         Publisher = "Signet",
                         ISBN = "978-0451419439",
-                        Category = "Fiction, Classic",
+                        Classification = "Fiction",
+                        Category = "Classic",
                         Pages = 1488,
                         Price = 9.95
                     },
                     new Book
                     {
                         Title = "Team of Rivals",
-                        Author = "Doris Kearns Goodwin",
+                        AuthorFirst = "Doris Kearns",
+                        AuthorLast = "Goodwin",
                         Publisher = "Simon & Schuster",
                         ISBN = "978-0743270755",
-                        Category = "Non-Fiction, Biography",
+                        Classification = "Non-Fiction",
+                        Category = "Biography",
                         Pages = 944,
                         Price = 14.58
                     },
                     new Book
                     {
                         Title = "The Snowball",
-                        Author = "Alice Schroeder",
+                        AuthorFirst = "Alice",
+                        AuthorLast = "Schroeder",
                         Publisher = "Bantam",
                         ISBN = "978-0553384611",
-                        Category = "Non-Fiction, Biography",
+                        Classification = "Non-Fiction",
+                        Category = "Biography",
                         Pages = 832,
                         Price = 21.54
                     },
                     new Book
                     {
                         Title = "American Ulysses",
-                        Author = "Ronald C. White",
+                        AuthorFirst = "Ronald C.",
+                        AuthorLast = "White",
                         Publisher = "Random House",
                         ISBN = "978-0812981254",
-                        Category = "Non-Fiction, Biography",
+                        Classification = "Non-Fiction",
+                        Category = "Biography",
                         Pages = 864,
                         Price = 11.61
                     },
                     new Book
                     {
                         Title = "Unbroken",
-                        Author = "Laura Hillenbrand",
+                        AuthorFirst = "Laura",
+                        AuthorLast = "Hillenbrand",
                         Publisher = "Random House",
                         ISBN = "978-0812974492",
-                        Category = "Non-Fiction, Historical",
+                        Classification = "Non-Fiction",
+                        Category = "Historical",
                         Pages = 528,
                         Price = 13.33
                     },
                     new Book
                     {
                         Title = "The Great Train Robbery",
-                        Author = "Michael Crichton",
+                        AuthorFirst = "Michael",
+                        AuthorLast = "Crichton",
                         Publisher = "Vintage",
                         ISBN = "978-0804171281",
-                        Category = "Fiction, Historical Fiction",
+                        Classification = "Fiction",
+                        Category = "Historical Fiction",
                         Pages = 288,
                         Price = 15.95
                     },
                     new Book
                     {
                         Title = "Deep Work",
-                        Author = "Cal Newport",
+                        AuthorFirst = "Cal",
+                        AuthorLast = "Newport",
                         Publisher = "Grand Central Publishing",
                         ISBN = "978-1455586691",
-                        Category = "Non-Fiction, Self-Help",
+                        Classification = "Non-Fiction",
+                        Category = "Self-Help",
                         Pages = 304,
                         Price = 14.99
                     },
                     new Book
                     {
                         Title = "It's Your Ship",
-                        Author = "Michael Abrashoff",
+                        AuthorFirst = "Michael",
+                        AuthorLast = "Abrashoff",
                         Publisher = "Grand Central Publishing",
                         ISBN = "978-1455523023",
-                        Category = "Non-Fiction, Self-Help",
+                        Classification = "Non-Fiction",
+                        Category = "Self-Help",
                         Pages = 240,
                         Price = 21.66
                     },
                     new Book
                     {
                         Title = "The Virgin Way",
-                        Author = "Richard Branson",
+                        AuthorFirst = "Richard",
+                        AuthorLast = "Branson",
                         Publisher = "Portfolio",
                         ISBN = "978-1591847984",
-                        Category = "Non-Fiction, Business",
+                        Classification = "Non-Fiction",
+                        Category = "Business",
                         Pages = 400,
                         Price = 29.16
                     },
                     new Book
                     {
                         Title = "Sycamore Row",
-                        Author = "John Grisham",
+                        AuthorFirst = "John",
+                        AuthorLast = "Grisham",
                         Publisher = "Bantam",
                         ISBN = "978-0553393613",
-                        Category = "Fiction, Thrillers",
+                        Classification = "Fiction",
+                        Category = "Thrillers",
                         Pages = 642,
                         Price = 15.03
                     },
                     new Book
                     {
                         Title = "Airborn",
-                        Author = "Kenneth Oppel",
+                        AuthorFirst = "Kenneth",
+                        AuthorLast = "Oppel",
                         Publisher = "HarperCollins",
                         ISBN = "978-0060531829",
-                        Category = "Fiction, Teen",
+                        Classification = "Fiction",
+                        Category = "Teen",
                         Pages = 544,
                         Price = 9.99
                     },
                     new Book
                     {
                         Title = "How to Win Friends and Influence People",
-                        Author = "Dale Carnegie",
+                        AuthorFirst = "Dale",
+                        AuthorLast = "Carnegie",
                         Publisher = "Pocket Books",
                         ISBN = "978-0671027032",
-                        Category = "Self Improvement",
+                        Classification = "Non-Fiction",
+                        Category = "Self-Help",
                         Pages = 288,
                         Price = 11.99
                     },
                     new Book
                     {
-                        Title = "Green Eggs and Ham",
-                        Author = "Dr.Suess",
-                        Publisher = "Random House",
-                        ISBN = "978-0394800165",
-                        Category = "Fiction, Children",
-                        Pages = 65,
-                        Price = 4.79,
+                        Title = "If You Give a Mouse a Cookie",
+                        AuthorFirst = "Laura",
+                        AuthorLast = "Numeroff",
+                        Publisher = "HarperCollins",
+                        ISBN = "978-0060245863",
+                        Classification = "Fiction",
+                        Category = "Children",
+                        Pages = 40,
+                        Price = 10.88,
                     }
                 );
 

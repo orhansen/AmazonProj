@@ -29,7 +29,7 @@ namespace AmazonProj
 
             services.AddDbContext<AmazonDBContext>(options =>
            {
-               options.UseSqlServer(Configuration["ConnectionStrings:AmazonConnection"]);
+               options.UseSqlite(Configuration["ConnectionStrings:AmazonConnection"]);
            });
 
             services.AddScoped<IAmazonRepository, EFAmazonRepository>();
@@ -57,12 +57,24 @@ namespace AmazonProj
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute( //This helps control how the URL appears. Differs from the default to allow better readability
-                    "pagination",
-                    "Books/P{page}",
-                    new { Controller = "Home", action = "Index" });
+            endpoints.MapControllerRoute("catpage",
+                "{category}/P{page:int}",
+                new { Controller = "Home", action = "Index" });
 
-                endpoints.MapDefaultControllerRoute();
+            endpoints.MapControllerRoute("page",
+                "P{page:int}",
+                new { Controller = "Home", action = "Index" });
+
+            endpoints.MapControllerRoute("category",
+                "{category}",
+                new { Controller = "Home", action = "Index", page = 1 });
+
+            endpoints.MapControllerRoute( //This helps control how the URL appears. Differs from the default to allow better readability
+                "pagination",
+                "Books/P{page}",
+                new { Controller = "Home", action = "Index" });
+
+            endpoints.MapDefaultControllerRoute();
             });
 
             SeedData.EnsurePopulated(app);

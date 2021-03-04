@@ -8,7 +8,19 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 </head>
 
-<body class="text-center bg-info">
-    @RenderBody()
+<body>
+    <div class="bg-dark text-white text-center p-2">
+        <span class="navbar-brand">Amazon Books</span>
+    </div>
+    <div class="row m-1 p-1">
+        <div class="col-3">
+            <h1>Books for You!</h1>
+            <vc:navigation-menu /> @*Uses the View component method to pull in the navigation menu*@
+        </div>    
+        <div class="col-9" align="center">
+            @RenderBody()
+        </div>
+    </div>
+
 </body>
 </html>

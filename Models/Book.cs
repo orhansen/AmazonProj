@@ -15,12 +15,16 @@ namespace AmazonProj.Models
         [Required]
         public string Title { get; set; }
         [Required]
-        public string Author { get; set; }
+        public string AuthorFirst { get; set; }
+        [Required]
+        public string AuthorLast { get; set; }
         [Required]
         public string Publisher { get; set; }
         [Required]
         [RegularExpression("[0-9]{3}-[0-9]{10}")] //Ensures the ISBN is inputted properly for future validation
         public string ISBN { get; set; }
+        [Required]
+        public string Classification { get; set; }
         [Required]
         public string Category { get; set; }
         [Required]

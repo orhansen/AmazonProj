@@ -1,0 +1,14 @@
+﻿@*A partial View that can be used to be inserted into any view that may need the book listings*@
+@model Book
+
+<div class="card card-outline-dark m-3 p-1">
+    <span class="badge badge-pill badge-dark text-light font-weight-bold">
+        <h4>@Model.Title</h4>
+    </span>
+    <p class="alert-danger">Author: @Model.AuthorFirst @Model.AuthorLast</p>
+    <p class="alert-primary">Publisher: @Model.Publisher</p>
+    <p class="alert-secondary">ISBN: @Model.ISBN</p>
+    <p class="alert-success">Classification/Category: @Model.Classification / @Model.Category</p>
+    <p class="alert-warning">Pages: @Model.Pages</p>
+    <p class="alert-dark text-light">Price: $@Model.Price</p>
+</div>

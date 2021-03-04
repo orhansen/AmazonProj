@@ -28,22 +28,27 @@ namespace AmazonProj.Controllers
         }
 
         //primary get action. will populate index page with the Books in the database.
-        public IActionResult Index(int page = 1)
+        //Will also filter the books by category and display the selecte category of books
+
+        public IActionResult Index(string category, int page = 1)
         {
             return View(new BookListViewModel
             {
                 Books = _repository.Books
+                    .Where(b => category == null || b.Category == category)
                     .OrderBy(b => b.BookID)
                     .Skip((page - 1) * PageSize)
                     .Take(PageSize)
                 ,
-                PagingInfo= new PagingInfo
+                PagingInfo = new PagingInfo
                 {
                     CurrentPage = page,
                     ItemsPerPage = PageSize,
-                    TotalNumItems = _repository.Books.Count()
-                }
-            });
+                    TotalNumItems = category == null ? _repository.Books.Count() :
+                        _repository.Books.Where(x => x.Category == category).Count()
+                },
+                CurrentCategory = category
+            }) ;
         }
 
         public IActionResult Privacy()
