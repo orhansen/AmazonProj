@@ -30,19 +30,19 @@ namespace AmazonProj.Controllers
         //primary get action. will populate index page with the Books in the database.
         //Will also filter the books by category and display the selecte category of books
 
-        public IActionResult Index(string category, int page = 1)
+        public IActionResult Index(string category, int pageNum = 1)
         {
             return View(new BookListViewModel
             {
                 Books = _repository.Books
                     .Where(b => category == null || b.Category == category)
                     .OrderBy(b => b.BookID)
-                    .Skip((page - 1) * PageSize)
+                    .Skip((pageNum - 1) * PageSize)
                     .Take(PageSize)
                 ,
                 PagingInfo = new PagingInfo
                 {
-                    CurrentPage = page,
+                    CurrentPage = pageNum,
                     ItemsPerPage = PageSize,
                     TotalNumItems = category == null ? _repository.Books.Count() :
                         _repository.Books.Where(x => x.Category == category).Count()

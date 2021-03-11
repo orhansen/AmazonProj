@@ -1,6 +1,7 @@
 using AmazonProj.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -33,6 +34,14 @@ namespace AmazonProj
            });
 
             services.AddScoped<IAmazonRepository, EFAmazonRepository>();
+
+            services.AddRazorPages();
+
+            services.AddDistributedMemoryCache();
+            services.AddSession();
+
+            services.AddScoped<Cart>(sp => SessionCart.GetCart(sp));
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,30 +60,33 @@ namespace AmazonProj
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
+            app.UseSession();
+
             app.UseRouting();
 
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
-            endpoints.MapControllerRoute("catpage",
-                "{category}/P{page:int}",
-                new { Controller = "Home", action = "Index" });
+                endpoints.MapControllerRoute("catpage",
+                    "{category}/P{pageNum:int}",
+                    new { Controller = "Home", action = "Index" });
 
-            endpoints.MapControllerRoute("page",
-                "P{page:int}",
-                new { Controller = "Home", action = "Index" });
+                endpoints.MapControllerRoute("page",
+                    "P{pageNum:int}",
+                    new { Controller = "Home", action = "Index" });
 
-            endpoints.MapControllerRoute("category",
-                "{category}",
-                new { Controller = "Home", action = "Index", page = 1 });
+                endpoints.MapControllerRoute("category",
+                    "{category}",
+                    new { Controller = "Home", action = "Index", pageNum = 1 });
 
-            endpoints.MapControllerRoute( //This helps control how the URL appears. Differs from the default to allow better readability
-                "pagination",
-                "Books/P{page}",
-                new { Controller = "Home", action = "Index" });
+                endpoints.MapControllerRoute("pagination",
+                    "Books/P{pageNum}",
+                    new { Controller = "Home", action = "Index" });
 
-            endpoints.MapDefaultControllerRoute();
+                endpoints.MapDefaultControllerRoute();
+
+                endpoints.MapRazorPages();
             });
 
             SeedData.EnsurePopulated(app);
